@@ -14,4 +14,11 @@ describe('Cell', function () {
     cell.die();
     expect(cell.alive).toBe(false);
   });
+
+  it('should be able to becomes alive', function () {
+    cell.die();
+    expect(cell.alive).toBe(false);
+    cell.resurrect();
+    expect(cell.alive).toBe(true);
+  });
 });
