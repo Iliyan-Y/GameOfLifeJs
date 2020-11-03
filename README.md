@@ -15,3 +15,29 @@ Any live cell with less than 2 live neighbours dies (underpopulation).
 Any live cell with more than 3 live neighbours dies (overpopulation).
 Any dead cell with exactly 3 neighbours becomes a live cell (reproduction).
 Write code that is capable of calculating each new generation, given a starter board. Although you don't have to build a visualisation tool to be able to see the evolution, it should be easy to extend the program to add on a web or command line ui.
+
+## Approach
+
+_Class of Game_
+
+- responsible for the cycles (ticks)
+- is given a starter board
+- calculate each generation
+
+_Class of Cell_
+
+- is alive
+- is dead
+- has neighbours
+
+_cases_
+
+- live cell
+
+  - neighbors == 3
+  - neighbors == 2
+
+- dead cell
+  - neighbors > 3
+  - neighbors < 2
+  - edge case if neighbors === 3 becomes a live
