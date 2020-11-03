@@ -9,4 +9,9 @@ describe('Cell', function () {
   it('should be able to be alive by default', function () {
     expect(cell.alive).toBe(true);
   });
+
+  it('should be able to be die', function () {
+    cell.die();
+    expect(cell.alive).toBe(false);
+  });
 });
