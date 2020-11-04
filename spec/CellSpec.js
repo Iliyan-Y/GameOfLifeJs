@@ -10,6 +10,11 @@ describe('Cell', function () {
     expect(cell.alive).toBe(true);
   });
 
+  it('cell can be created as dead', function () {
+    deadCell = new Cell(false);
+    expect(deadCell.alive).toBe(false);
+  });
+
   it('should be able to be die', function () {
     cell.die();
     expect(cell.alive).toBe(false);
