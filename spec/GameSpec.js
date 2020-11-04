@@ -12,4 +12,11 @@ describe('Game', () => {
       expect(game.population[0][0]).toEqual('TEST');
     });
   });
+
+  describe('verifyGeneration', () => {
+    it('Checks if the current generation with one cell is dead', () => {
+      game.createGeneration(['TEST']);
+      expect(game.verifyGeneration()).toBe(false);
+    });
+  });
 });
