@@ -16,7 +16,7 @@ describe('Game', () => {
   describe('verifyGeneration', () => {
     it('Checks if the current generation with one cell is dead', () => {
       game.createGeneration(['TEST']);
-      expect(game.verifyGeneration()).toBe(false);
+      expect(game.verifyGeneration()[0]).toBe(false);
     });
   });
 });
