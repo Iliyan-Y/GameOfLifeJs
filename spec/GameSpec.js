@@ -6,17 +6,17 @@ describe('Game', () => {
     game = new Game();
   });
 
-  describe('createGeneration', () => {
+  describe('addPopulation', () => {
     it("create's a new generation of cells", () => {
-      game.createGeneration(['TEST']);
-      expect(game.population[0][0]).toEqual('TEST');
+      game.addPopulation([{ alive: false }]);
+      expect(game.population[0].alive).toEqual(false);
     });
   });
 
-  describe('verifyGeneration', () => {
+  describe('verifyPopulation', () => {
     it('Checks if the current generation with one cell is dead', () => {
-      game.createGeneration(['TEST']);
-      expect(game.verifyGeneration()[0]).toBe(false);
+      game.addPopulation([{ alive: true }]);
+      expect(game.verifyPopulation()).toBe(false);
     });
   });
 });
