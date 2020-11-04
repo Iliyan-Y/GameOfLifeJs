@@ -8,8 +8,8 @@ describe('Game', () => {
 
   describe('createGeneration', () => {
     it("create's a new generation of cells", () => {
-      game.createGeneration('TEST');
-      expect(game.popolation[0][0]).toEqual('TEST');
+      game.createGeneration(['TEST']);
+      expect(game.population[0][0]).toEqual('TEST');
     });
   });
 });
