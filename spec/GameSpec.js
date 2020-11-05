@@ -48,5 +48,20 @@ describe('Game', () => {
       expect(game.population[3].alive).toBe(true);
       expect(game.population[4].alive).toBe(false);
     });
+
+    it('Any live cell with 2 or 3 live neighbours survives until next tick', () => {
+      game.addPopulation([
+        new FakceCell(),
+        new FakceCell(),
+        new FakceCell(),
+        new FakceCell(),
+        new FakceCell(false),
+      ]);
+      game.verifyPopulation();
+      expect(game.population[0].alive).toBe(true);
+      expect(game.population[1].alive).toBe(true);
+      expect(game.population[2].alive).toBe(true);
+      expect(game.population[3].alive).toBe(true);
+    });
   });
 });
