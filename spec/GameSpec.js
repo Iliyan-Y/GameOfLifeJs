@@ -32,5 +32,21 @@ describe('Game', () => {
       game.verifyPopulation();
       expect(game.population[1].alive).toBe(false);
     });
+
+    it('Any live cell with more than 3 live neighbours dies', () => {
+      game.addPopulation([
+        new FakceCell(),
+        new FakceCell(),
+        new FakceCell(),
+        new FakceCell(),
+        new FakceCell(),
+      ]);
+      game.verifyPopulation();
+      expect(game.population[0].alive).toBe(true);
+      expect(game.population[1].alive).toBe(true);
+      expect(game.population[2].alive).toBe(false);
+      expect(game.population[3].alive).toBe(true);
+      expect(game.population[4].alive).toBe(false);
+    });
   });
 });
