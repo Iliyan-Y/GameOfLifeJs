@@ -1,6 +1,6 @@
 class FakeCell {
-  constructor() {
-    this.alive = true;
+  constructor(status = true) {
+    this.alive = status;
   }
 
   die() {
@@ -11,3 +11,5 @@ class FakeCell {
     this.alive = true;
   }
 }
+
+module.exports = FakeCell;

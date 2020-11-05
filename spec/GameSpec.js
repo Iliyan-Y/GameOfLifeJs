@@ -1,5 +1,6 @@
 describe('Game', () => {
   var Game = require('../lib/Game');
+  let FakceCell = require('./helpers/FakeCell');
   let game;
 
   beforeEach(function () {
@@ -14,9 +15,22 @@ describe('Game', () => {
   });
 
   describe('verifyPopulation', () => {
-    it('Checks if the current generation with one cell is dead', () => {
-      game.addPopulation([{ alive: true }]);
-      expect(game.verifyPopulation()).toBe(false);
+    it('Confirm thet cell cant live alone', () => {
+      game.addPopulation([new FakceCell()]);
+      game.verifyPopulation();
+      expect(game.population[0].alive).toBe(false);
+    });
+
+    it('Any live cell with less than 2 live neighbours dies', () => {
+      game.addPopulation([new FakceCell(), new FakceCell(false)]);
+      game.verifyPopulation();
+      expect(game.population[0].alive).toBe(false);
+    });
+
+    it('Any live cell with less than 2 live neighbours dies', () => {
+      game.addPopulation([new FakceCell(false), new FakceCell()]);
+      game.verifyPopulation();
+      expect(game.population[1].alive).toBe(false);
     });
   });
 });
