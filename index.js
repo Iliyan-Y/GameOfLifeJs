@@ -2,9 +2,9 @@ let Game = require('./lib/Game');
 
 let game = new Game();
 
-function gameRunner() {
+async function gameRunner() {
   let generation = [];
-  for (let i = 0; i != 20; i++) {
+  for (let i = 0; i != 70; i++) {
     let randomCell = getRandomInt(2) == 0 ? false : true;
     generation.push(new game.cell(randomCell));
   }
@@ -12,11 +12,12 @@ function gameRunner() {
 
   let count = 0;
 
-  console.log(displayCells(game));
+  //console.log(displayCells(game));
 
-  while (count != 4) {
+  while (count != 10) {
     game.verifyPopulation();
-    console.log(displayCells(game));
+    await twirlTimer();
+    console.log(count);
     count++;
   }
 }
@@ -30,8 +31,32 @@ function displayCells(game) {
       display += '0|';
     }
   });
-  return display;
+
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      console.log(display);
+      resolve();
+    }, 300)
+  );
 }
+
+var twirlTimer = function () {
+  var P = ['O', 'K', 'T', 'O'];
+  var x = 0;
+
+  let timer = setInterval(function () {
+    process.stdout.write(P[x++]);
+    x %= P.length;
+  }, 100);
+
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      timer;
+      clearInterval(timer);
+      resolve();
+    }, 420)
+  );
+};
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
