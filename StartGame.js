@@ -3,19 +3,20 @@ let Game = require('./lib/Game');
 let game = new Game();
 
 async function gameRunner() {
+  let reset = 0;
   game.addPopulation(createGeneration());
 
-  let count = 0;
-  while (count != 10) {
+  while (true) {
+    if (reset == 5) {
+      game.population = [];
+      game.addPopulation(createGeneration());
+      reset = 0;
+    }
+
     game.verifyPopulation();
     await displayCells(game);
     console.log('\r');
-    if (count == 5) {
-      game.population = [];
-      game.addPopulation(createGeneration());
-      count = 0;
-    }
-    count++;
+    reset++;
   }
 }
 
@@ -31,14 +32,7 @@ function createGeneration() {
 function displayCells(game) {
   let display = [];
   let chartReader = 0;
-
-  game.population.forEach((cell) => {
-    if (cell.alive) {
-      display.push('+');
-    } else {
-      display.push('-');
-    }
-  });
+  convertToCharacters(game, display);
 
   let readArray = setInterval(function () {
     process.stdout.write(display[chartReader++]);
@@ -52,6 +46,16 @@ function displayCells(game) {
       resolve();
     }, 365)
   );
+}
+
+function convertToCharacters(game, display) {
+  game.population.forEach((cell) => {
+    if (cell.alive) {
+      display.push('+');
+    } else {
+      display.push('-');
+    }
+  });
 }
 
 function getRandomInt(max) {
