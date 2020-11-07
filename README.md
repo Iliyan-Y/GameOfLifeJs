@@ -1,4 +1,18 @@
-# Game Of Life JavaScript
+# Description
+
+A simple version of Conway's Game of Life with Terminal visual output
+Based on the game of life but rules are applied for one dimensional array
+
+# Setup
+
+```
+> npm install
+> npm test
+> node
+> require('./StartGame')
+```
+
+## Game Of Life JavaScript
 
 Conway's Game of Life
 game of life example
