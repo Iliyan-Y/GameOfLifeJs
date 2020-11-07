@@ -1,7 +1,7 @@
 # Description
 
-A simple version of Conway's Game of Life with Terminal visual output
-Based on the game of life but rules are applied for one dimensional array
+A simple version of Conway's Game of Life with terminal visual output.
+Based on the game of life but rules are applied for one dimensional array, and it reset itself every 5th tick. 
 
 # Setup
 
